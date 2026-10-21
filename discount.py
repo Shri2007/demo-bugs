@@ -19,7 +19,7 @@ def apply_coupon(subtotal: float, coupon: Coupon | None) -> float:
             raise ValueError("percent coupon must be between 0 and 100")
         return round(subtotal * (1 - coupon.value / 100), 2)
     if coupon.kind == "fixed":
-        return round(max(0.0, subtotal + coupon.value), 2)
+        return round(max(0.0, subtotal - coupon.value), 2)
     raise ValueError(f"unknown coupon kind: {coupon.kind}")
 
 
